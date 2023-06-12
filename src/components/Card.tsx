@@ -1,4 +1,5 @@
 import React from "react";
+import { BsStarFill } from "react-icons/bs";
 
 const Card: React.FC = () => {
   return (
@@ -9,11 +10,16 @@ const Card: React.FC = () => {
           alt="Shoes"
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">Villa Griya Indah</h2>
-        <p>Malang</p>
-        <p>Rp 1.000.000/malam</p>
-        <div className="card-actions justify-end">
+      <div className="card-body grid grid-cols-2 items-center">
+        <h2 className="card-title">Villa Griya</h2>
+        <div className="flex items-center justify-end">
+          <span className="text-yellow-500 font-semibold">4.5</span>
+          <BsStarFill className="text-yellow-500 ml-1" />
+        </div>
+        <p className="col-span-2">Malang</p>
+        <p className="col-span-2">Rp 1.000.000/malam</p>
+        <p className="col-span-2"></p>
+        <div className="card-actions justify-end col-span-2">
           <button className="btn bg-blue-500">Detail</button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import logo from "../../public/Dashil.png";
+import logo from "../../public/dais.png";
 import avatar from "../../public/Avatar 1.png";
 
 interface ChildrenProps {
@@ -10,7 +10,8 @@ const Navbar: FC<ChildrenProps> = ({ label }) => {
   return (
     <div className="navbar bg-sky-500">
       <div className="navbar-start">
-        <img src={logo} alt="Logo" className="w-[100px]" />
+        <img src={logo} alt="Logo" className="w-[60px] ml-10" />
+
         <h1 className="text-3xl text-white font-semibold">{label}</h1>
       </div>
       <div className="navbar-center">
