@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
 
@@ -16,14 +15,14 @@ const App = () => {
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/Home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Profil" element={<Profil />} />
           <Route path="/Detail" element={<Detail />} />
           <Route path="/Sewakan" element={<Sewakan />} />
-          <Route path="/Sewakan" element={<Disewakan />} />
-          <Route path="/Sewakan" element={<Riview />} />
+          <Route path="/Disewakan" element={<Disewakan />} />
+          <Route path="/Riview" element={<Riview />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
