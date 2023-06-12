@@ -1,42 +1,62 @@
-import React from "react";
+import { FC } from "react";
+import logo from "../../public/Dashil.png";
+import avatar from "../../public/Avatar 1.png";
 
-const Navbar: React.FC = () => {
+interface ChildrenProps {
+  label?: string;
+}
+
+const Navbar: FC<ChildrenProps> = ({ label }) => {
   return (
-    <div className="navbar bg-blue-500 w-screen fixed top-0">
-      <div className="flex-1">
-        <a href="/" className="btn btn-ghost normal-case text-xl">
-          <img src="../assets/logoais.png" alt="Logo" className="Home" />
-        </a>
+    <div className="navbar bg-sky-500">
+      <div className="navbar-start">
+        <img src={logo} alt="Logo" className="w-[100px]" />
+        <h1 className="text-3xl text-white font-semibold">{label}</h1>
       </div>
-      <div className="flex-none gap-2">
+      <div className="navbar-center">
         <div className="form-control">
           <input
             type="text"
             placeholder="Search"
-            className="input input-bordered w-24 md:w-auto"
+            className="input max-w-xs lg:w-96"
           />
+        </div>
+      </div>
+      <div className="navbar-end">
+        <div className="mx-5">
+          <button className="bg-white hover:bg-blue-500 text-sky-500 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
+            Login
+          </button>
+        </div>
+        <div className="mr-5">
+          <button className="bg-white hover:bg-blue-500 text-sky-500 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
+            Logout
+          </button>
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img
-                src="https://marriedwikibio.com/wp-content/uploads/2020/12/Song-Joong-Ki.jpg"
-                alt="Profile"
-              />
+              <img src={avatar} />
             </div>
           </label>
           <ul
             tabIndex={0}
-            className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">Profil</a>
+              <a className="justify-between">
+                Profile Saya
+                <span className="badge">New</span>
+              </a>
             </li>
             <li>
               <a>Pesanan Saya</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a>Sewakan</a>
+            </li>
+            <li>
+              <a>Penginapan Saya</a>
             </li>
           </ul>
         </div>
