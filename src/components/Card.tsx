@@ -1,5 +1,6 @@
 import React from "react";
 import { BsStarFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Card: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ const Card: React.FC = () => {
       <figure>
         <img
           src="https://pinhome-blog-assets-public.s3.amazonaws.com/2021/12/img_61aa254c02efd.jpg"
-          alt="Shoes"
+          alt="Gambar Villa"
         />
       </figure>
       <div className="card-body grid grid-cols-2 items-center">
@@ -20,7 +21,9 @@ const Card: React.FC = () => {
         <p className="col-span-2">Rp 1.000.000/malam</p>
         <p className="col-span-2"></p>
         <div className="card-actions justify-end col-span-2">
-          <button className="btn bg-blue-500">Detail</button>
+          <Link to="/detail" className="btn bg-blue-500">
+            Detail
+          </Link>
         </div>
       </div>
     </div>

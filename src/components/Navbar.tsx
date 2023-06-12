@@ -1,6 +1,7 @@
 import { FC } from "react";
 import logo from "../../public/dais.png";
 import avatar from "../../public/Avatar 1.png";
+import { Link } from "react-router-dom";
 
 interface ChildrenProps {
   label?: string;
@@ -24,15 +25,18 @@ const Navbar: FC<ChildrenProps> = ({ label }) => {
         </div>
       </div>
       <div className="navbar-end">
-        <div className="mx-5">
+        <Link to="/login">
           <button className="bg-white hover:bg-blue-500 text-sky-500 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
             Login
           </button>
-        </div>
+        </Link>
+
         <div className="mr-5">
-          <button className="bg-white hover:bg-blue-500 text-sky-500 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
-            Logout
-          </button>
+          <Link to="/signup">
+            <button className="bg-white hover:bg-blue-500 text-sky-500 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded">
+              Daftar
+            </button>
+          </Link>
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
