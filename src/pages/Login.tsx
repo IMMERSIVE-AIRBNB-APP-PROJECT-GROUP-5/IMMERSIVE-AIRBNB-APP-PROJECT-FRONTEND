@@ -37,8 +37,8 @@ const Login: React.FC = () => {
       const response = await API.Login(user.email, user.password);
       console.log(response.data);
 
-      // Navigate ke halaman dashboard
-      navigate("/dashboard");
+      // Navigate ke halaman home
+      navigate("/home");
 
       // Contoh penggunaan Swal
       Swal.fire("Login Success", "You have successfully logged in.", "success");

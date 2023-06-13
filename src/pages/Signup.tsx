@@ -25,7 +25,7 @@ const Signup: React.FC = () => {
       phone: "",
     },
     validationSchema: schema,
-    onSubmit: (values) => {
+    onSubmit: (values: any) => {
       console.log(values);
     },
   });
@@ -40,11 +40,11 @@ const Signup: React.FC = () => {
 
     try {
       // Panggil API Sign Up
-      const response = await API.signup(user);
+      const response = await API.SignUp(user);
       console.log(response.data);
 
       // Navigate ke halaman dashboard
-      navigate("/dashboard");
+      navigate("/home");
 
       // Contoh penggunaan Swal
       Swal.fire(

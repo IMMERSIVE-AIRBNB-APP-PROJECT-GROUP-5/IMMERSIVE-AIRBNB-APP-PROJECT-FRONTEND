@@ -52,13 +52,13 @@ const Navbar: FC<ChildrenProps> = ({ label }) => {
               <a className="justify-between ">Profile Saya</a>
             </li>
             <li>
-              <a>Pesanan Saya</a>
+              <Link to="/pesanan">Pesanan Saya</Link>
             </li>
             <li>
-              <a>Sewakan</a>
+              <Link to="/validasi">Mulai Sewakan</Link>
             </li>
             <li>
-              <a>Penginapan Saya</a>
+              <Link to="/home">Logout</Link>
             </li>
           </ul>
         </div>
