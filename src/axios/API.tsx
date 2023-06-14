@@ -1,5 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 
+interface HomeStayData {
+  id: number;
+  name: string;
+  rating: number;
+  city: string;
+  price: string;
+}
+
 interface API {
   Login: (email: string, password: string) => Promise<AxiosResponse<any, any>>;
   SignUp: (
@@ -9,10 +17,11 @@ interface API {
     password: string
   ) => Promise<AxiosResponse<any, any>>;
   submitHomeStay: (data: HomeStayData) => Promise<AxiosResponse<any, any>>;
+  getHomeStayData: () => Promise<AxiosResponse<any, any>>;
 }
 
 const instance = axios.create({
-  baseURL: ``,
+  baseURL: `https://app.swaggerhub.com/apis-docs/khadafirain/AIR_BNB_APP/1.0.0`,
 });
 
 const API: API = {
@@ -39,8 +48,13 @@ const API: API = {
   submitHomeStay: (data) =>
     instance({
       method: "POST",
-      url: "/submit-homestay",
+      url: "/homestays",
       data,
+    }),
+  getHomeStayData: () =>
+    instance({
+      method: "GET",
+      url: "/homestays",
     }),
 };
 
