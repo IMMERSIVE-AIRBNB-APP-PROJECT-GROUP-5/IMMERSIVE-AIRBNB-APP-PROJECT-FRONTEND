@@ -9,6 +9,7 @@ import Detail from "./pages/Detail";
 import Sewakan from "./pages/Sewakan";
 // import Disewakan from "./pages/Disewakan";
 import Riview from "./pages/Riview";
+import Pesanan from "./pages/Pesanan";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           {/* <Route path="/Profil" element={<Profil />} /> */}
           <Route path="/Detail" element={<Detail />} />
           <Route path="/Sewakan" element={<Sewakan />} />
+          <Route path="/Pesanan" element={<Pesanan />} />
           {/* <Route path="/Sewakan" element={<Disewakan />} /> */}
           <Route path="/Review" element={<Riview />} />
         </Routes>
