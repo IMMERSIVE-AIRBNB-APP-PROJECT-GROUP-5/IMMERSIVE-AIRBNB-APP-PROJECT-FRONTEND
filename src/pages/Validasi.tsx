@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const schema = Yup.object().shape({
-  image: Yup.mixed().required("Image is required"),
+  image: Yup.mixed().nullable().required("Image is required"),
 });
 
 const Validasi = () => {
@@ -20,31 +20,38 @@ const Validasi = () => {
     validationSchema: schema,
     onSubmit: async (values) => {
       const formData = new FormData();
-      formData.append("image", values.image);
+
+      if (values.image !== null) {
+        formData.append("image", values.image);
+      }
 
       try {
-        // Send form data to the API
-        const response = await axios.post("API_URL", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        // Kirim data form ke API
+        const response = await axios.post(
+          "http://35.193.64.69/users/validate",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         console.log(response.data);
 
-        // Display success notification
+        // Tampilkan notifikasi sukses
         Swal.fire(
           "Upload Success",
           "Image uploaded successfully.",
           "success"
         ).then(() => {
-          // Navigate to the Sewakan page
+          // Arahkan ke halaman Sewakan
           navigate("/Sewakan");
         });
       } catch (error) {
         console.error(error);
 
-        // Display error notification
+        // Tampilkan notifikasi error
         Swal.fire(
           "Upload Error",
           "An error occurred while uploading the image.",

@@ -42,7 +42,7 @@ const Card: React.FC<CardProps> = () => {
         <img src={homeStayData.image} alt="Gambar Villa" />
       </figure>
       <div className="card-body grid grid-cols-2 items-center">
-        <h2 className="card-title">{homeStayData.name}</h2>
+        <h2 className="card-title">{homeStayData.homestay}</h2>
         <div className="flex items-center justify-end">
           <span className="text-yellow-500 font-semibold">
             {homeStayData.rating}

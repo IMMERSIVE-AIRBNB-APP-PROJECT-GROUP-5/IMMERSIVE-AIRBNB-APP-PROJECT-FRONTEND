@@ -11,8 +11,8 @@ interface HomeStayData {
 interface API {
   Login: (email: string, password: string) => Promise<AxiosResponse<any, any>>;
   SignUp: (
-    name: string,
-    phoneNumber: string,
+    nama: string,
+    phone: string,
     email: string,
     password: string
   ) => Promise<AxiosResponse<any, any>>;
@@ -21,7 +21,7 @@ interface API {
 }
 
 const instance = axios.create({
-  baseURL: `https://app.swaggerhub.com/apis-docs/khadafirain/AIR_BNB_APP/1.0.0`,
+  baseURL: `http://35.193.64.69`,
 });
 
 const API: API = {
@@ -34,15 +34,15 @@ const API: API = {
         password,
       },
     }),
-  SignUp: (name, phoneNumber, email, password) =>
+  SignUp: (nama, email, password, phone) =>
     instance({
       method: "POST",
-      url: "/signup",
+      url: "/register",
       data: {
-        name,
-        phoneNumber,
+        nama,
         email,
         password,
+        phone,
       },
     }),
   submitHomeStay: (data) =>
