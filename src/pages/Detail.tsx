@@ -1,5 +1,15 @@
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Herodetail from "../components/Herodetail";
+
 const Detail = () => {
-  return <div>Detail</div>;
+  return (
+    <>
+      <Navbar label="Detail" />
+      <Herodetail />
+      <Footer />
+    </>
+  );
 };
 
 export default Detail;
