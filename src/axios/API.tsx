@@ -8,20 +8,39 @@ interface HomeStayData {
   price: string;
 }
 
+interface EditProfileData {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+}
+
+interface UserData {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 interface API {
   Login: (email: string, password: string) => Promise<AxiosResponse<any, any>>;
   SignUp: (
     nama: string,
-    phone: string,
     email: string,
-    password: string
+    password: string,
+    phone: string
   ) => Promise<AxiosResponse<any, any>>;
   submitHomeStay: (data: HomeStayData) => Promise<AxiosResponse<any, any>>;
   getHomeStayData: () => Promise<AxiosResponse<any, any>>;
+  updateProfileData: (
+    data: EditProfileData
+  ) => Promise<AxiosResponse<any, any>>;
+  getUserData: () => Promise<AxiosResponse<UserData, any>>;
 }
 
 const instance = axios.create({
-  baseURL: `http://35.193.64.69`,
+  baseURL: "http://35.193.64.69",
 });
 
 const API: API = {
@@ -55,6 +74,17 @@ const API: API = {
     instance({
       method: "GET",
       url: "/homestays",
+    }),
+  updateProfileData: (data) =>
+    instance({
+      method: "PUT",
+      url: `/users/${data.id}`,
+      data,
+    }),
+  getUserData: () =>
+    instance({
+      method: "GET",
+      url: "/users",
     }),
 };
 

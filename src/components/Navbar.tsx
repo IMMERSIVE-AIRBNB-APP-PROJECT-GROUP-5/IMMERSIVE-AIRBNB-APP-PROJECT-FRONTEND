@@ -49,7 +49,7 @@ const Navbar: FC<ChildrenProps> = ({ label }) => {
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-58"
           >
             <li>
-              <a className="justify-between ">Profile Saya</a>
+              <Link to="/profil">Profile Saya</Link>
             </li>
             <li>
               <Link to="/pesanan">Pesanan Saya</Link>
