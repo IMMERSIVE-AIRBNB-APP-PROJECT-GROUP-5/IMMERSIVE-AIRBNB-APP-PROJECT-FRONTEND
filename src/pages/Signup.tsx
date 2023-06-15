@@ -8,9 +8,9 @@ import loginImg from "../assets/fotosamping.jpeg";
 import API from "../axios/API";
 
 const schema = Yup.object({
+  nama: Yup.string().required("Name required"),
   email: Yup.string().required("Email required"),
   password: Yup.string().required("Password required"),
-  name: Yup.string().required("Name required"),
   phone: Yup.string().required("Phone number required"),
 });
 
@@ -19,13 +19,13 @@ const Signup: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
+      nama: "",
       email: "",
       password: "",
-      name: "",
       phone: "",
     },
     validationSchema: schema,
-    onSubmit: (values) => {
+    onSubmit: (values: any) => {
       console.log(values);
     },
   });
@@ -34,17 +34,27 @@ const Signup: React.FC = () => {
     const user = {
       email: formik.values.email,
       password: formik.values.password,
-      name: formik.values.name,
+      nama: formik.values.nama,
       phone: formik.values.phone,
     };
 
+    console.log(user.nama);
+    console.log(user.email);
+    console.log(user.password);
+    console.log(user.phone);
+
     try {
       // Panggil API Sign Up
-      const response = await API.signup(user);
+      const response = await API.SignUp(
+        user.nama,
+        user.email,
+        user.password,
+        user.phone
+      );
       console.log(response.data);
 
       // Navigate ke halaman dashboard
-      navigate("/dashboard");
+      navigate("/home");
 
       // Contoh penggunaan Swal
       Swal.fire(
@@ -88,6 +98,19 @@ const Signup: React.FC = () => {
             Daftar Akun Baru
           </h3>
           <div className="flex flex-col text-black py-2">
+            <label>Nama</label>
+            <input
+              value={formik.values.nama}
+              onChange={formik.handleChange}
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline ${
+                formik.values.nama === "" ? "bg-white" : ""
+              }`}
+              id="nama"
+              type="text"
+              placeholder="Nama"
+            />
+          </div>
+          <div className="flex flex-col text-black py-2">
             <label>Email</label>
             <input
               value={formik.values.email}
@@ -121,19 +144,6 @@ const Signup: React.FC = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-          </div>
-          <div className="flex flex-col text-black py-2">
-            <label>Name</label>
-            <input
-              value={formik.values.name}
-              onChange={formik.handleChange}
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline ${
-                formik.values.name === "" ? "bg-white" : ""
-              }`}
-              id="name"
-              type="text"
-              placeholder="Name"
-            />
           </div>
           <div className="flex flex-col text-black py-2">
             <label>Phone Number</label>

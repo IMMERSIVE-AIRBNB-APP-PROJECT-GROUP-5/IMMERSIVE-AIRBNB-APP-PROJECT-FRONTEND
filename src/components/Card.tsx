@@ -1,24 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import API from "../axios/API";
 
-const Card: React.FC = () => {
+interface CardProps {
+  // props lainnya
+}
+
+interface HomeStayData {
+  image: string;
+  name: string;
+  rating: number;
+  city: string;
+  price: string;
+}
+
+const Card: React.FC<CardProps> = () => {
+  const [homeStayData, setHomeStayData] = useState<HomeStayData | null>(null);
+
+  useEffect(() => {
+    // Fungsi untuk mendapatkan data penginapan dari server
+    const fetchHomeStayData = async () => {
+      try {
+        const response = await API.getHomeStayData();
+        setHomeStayData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchHomeStayData();
+  }, []);
+
+  if (!homeStayData) {
+    return <div>Loading...</div>; // Tampilkan pesan loading atau komponen skeleton jika data masih diambil dari server
+  }
+
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
-        <img
-          src="https://pinhome-blog-assets-public.s3.amazonaws.com/2021/12/img_61aa254c02efd.jpg"
-          alt="Gambar Villa"
-        />
+        <img src={homeStayData.image} alt="Gambar Villa" />
       </figure>
       <div className="card-body grid grid-cols-2 items-center">
-        <h2 className="card-title">Villa Griya</h2>
+        <h2 className="card-title">{homeStayData.homestay}</h2>
         <div className="flex items-center justify-end">
-          <span className="text-yellow-500 font-semibold">4.5</span>
+          <span className="text-yellow-500 font-semibold">
+            {homeStayData.rating}
+          </span>
           <BsStarFill className="text-yellow-500 ml-1" />
         </div>
-        <p className="col-span-2">Malang</p>
-        <p className="col-span-2">Rp 1.000.000/malam</p>
+        <p className="col-span-2">{homeStayData.city}</p>
+        <p className="col-span-2">{homeStayData.price}</p>
         <p className="col-span-2"></p>
         <div className="card-actions justify-end col-span-2">
           <Link to="/detail" className="btn bg-blue-500">
