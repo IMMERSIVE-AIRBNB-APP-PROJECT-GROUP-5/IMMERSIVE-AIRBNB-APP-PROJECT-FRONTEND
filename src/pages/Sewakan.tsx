@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import API from "../axios/API";
 import Swal from "sweetalert2";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarWS";
 import Footer from "../components/Footer";
 
 const schema = Yup.object({
@@ -78,7 +78,7 @@ const Sewakan: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar label="Sewakan" />
       <div className="bg-white shadow-md p-6 rounded-lg">
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-4">

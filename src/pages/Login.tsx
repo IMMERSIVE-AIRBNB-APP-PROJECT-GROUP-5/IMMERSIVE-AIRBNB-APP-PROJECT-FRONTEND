@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -38,7 +38,7 @@ const Login: React.FC = () => {
       console.log(response.data);
 
       // Navigate ke halaman home
-      navigate("/home");
+      navigate("/beranda");
 
       // Contoh penggunaan Swal
       Swal.fire("Login Success", "You have successfully logged in.", "success");

@@ -1,8 +1,8 @@
 import Card from "../components/Card";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarB";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Beranda = () => {
   return (
     <div>
       <Navbar label="Beranda" />
@@ -27,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Beranda;

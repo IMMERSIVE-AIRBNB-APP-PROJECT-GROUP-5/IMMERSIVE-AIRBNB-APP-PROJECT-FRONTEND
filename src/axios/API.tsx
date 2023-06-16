@@ -24,6 +24,7 @@ interface UserData {
 }
 
 interface API {
+  deleteUserAccount: any;
   Login: (email: string, password: string) => Promise<AxiosResponse<any, any>>;
   SignUp: (
     nama: string,
@@ -40,7 +41,7 @@ interface API {
 }
 
 const instance = axios.create({
-  baseURL: "http://35.193.64.69",
+  baseURL: "https://group5.altapro.online",
 });
 
 const API: API = {
@@ -86,6 +87,7 @@ const API: API = {
       method: "GET",
       url: "/users",
     }),
+  deleteUserAccount: undefined,
 };
 
 export default API;

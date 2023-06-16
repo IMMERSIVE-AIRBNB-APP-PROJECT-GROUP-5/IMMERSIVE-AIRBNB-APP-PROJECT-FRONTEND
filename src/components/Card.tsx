@@ -3,15 +3,13 @@ import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import API from "../axios/API";
 
-interface CardProps {
-  // props lainnya
-}
+interface CardProps {}
 
 interface HomeStayData {
-  image: string;
-  name: string;
+  url: string;
+  homestay_name: string;
+  city_name: string;
   rating: number;
-  city: string;
   price: string;
 }
 
@@ -39,17 +37,17 @@ const Card: React.FC<CardProps> = () => {
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={homeStayData.image} alt="Gambar Villa" />
+        <img src={homeStayData.url} alt="Gambar Villa" />
       </figure>
       <div className="card-body grid grid-cols-2 items-center">
-        <h2 className="card-title">{homeStayData.homestay}</h2>
+        <h2 className="card-title">{homeStayData.homestay_name}</h2>
         <div className="flex items-center justify-end">
           <span className="text-yellow-500 font-semibold">
             {homeStayData.rating}
           </span>
           <BsStarFill className="text-yellow-500 ml-1" />
         </div>
-        <p className="col-span-2">{homeStayData.city}</p>
+        <p className="col-span-2">{homeStayData.city_name}</p>
         <p className="col-span-2">{homeStayData.price}</p>
         <p className="col-span-2"></p>
         <div className="card-actions justify-end col-span-2">
