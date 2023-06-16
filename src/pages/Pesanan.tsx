@@ -1,6 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarWS";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Pesanan = () => {
   return (
@@ -39,9 +40,11 @@ const Pesanan = () => {
             Jumat,03 Maret 2023 Sabtu,04 Maret 2023
           </p>
           <div className="flex justify-end">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded mr-3">
-              Berikan Review
-            </button>
+            <Link to="/Riview">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded mr-3">
+                Berikan Review
+              </button>
+            </Link>
           </div>
         </div>
         <div className="collapse-content">

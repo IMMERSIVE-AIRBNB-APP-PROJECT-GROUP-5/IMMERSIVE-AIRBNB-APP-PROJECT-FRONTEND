@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import avatarImage from "../assets/Avatar 1.png";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarWS";
 import Footer from "../components/Footer";
 
 interface User {
@@ -29,7 +29,7 @@ const ProfilePage: React.FC = () => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get("http://35.193.64.69/users");
+      const response = await axios.get("https://group5.altapro.online/users");
       const userData: User = response.data;
       setUser(userData);
     } catch (error) {
@@ -47,7 +47,7 @@ const ProfilePage: React.FC = () => {
 
   const updateUser = async () => {
     try {
-      await axios.put(`http://35.193.64.69/users/${user.id}`, user);
+      await axios.put(`https://group5.altapro.online/${user.id}`, user);
       console.log("User updated successfully!");
       setIsEditing(false);
     } catch (error) {
@@ -57,7 +57,7 @@ const ProfilePage: React.FC = () => {
 
   const deleteUser = async () => {
     try {
-      await axios.delete(`http://35.193.64.69/users/${user.id}`);
+      await axios.delete(`https://group5.altapro.online/${user.id}`);
       console.log("User deleted successfully!");
     } catch (error) {
       console.error(error);
@@ -74,9 +74,9 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar label="Profil Saya" />
       <div className="flex justify-center items-start mt-10 mb-10">
-        <div className="w-1/2 bg-white rounded-lg shadow-lg p-8">
+        <div className="w-1/2 bg-white rounded-lg p-8">
           <div className="flex items-center mb-4">
             <img
               src={avatarImage}
